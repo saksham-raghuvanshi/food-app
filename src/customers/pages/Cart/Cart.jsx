@@ -59,42 +59,46 @@ const Cart = () => {
     dispatch(findCart(localStorage.getItem("jwt")));
   }, []);
 
-  const handleSubmit = (values, { resetForm }) => {
-    const data = {
-      jwt: localStorage.getItem("jwt"),
-      order: {
-        restaurantId: cart.cartItems[0].food?.restaurant._id,
-        deliveryAddress: {
-          fullName: auth.user?.fullName,
-          streetAddress: values.streetAddress,
-          city: values.city,
-          state: values.state,
-          postalCode: values.pincode,
-          country: "India",
-        },
-      },
-    };
-    console.log("data",data)
-    if (isValid(cart.cartItems)) {
-      dispatch(createOrder(data));
-    } else setOpenSnakbar(true);
-  };
+  // const handleSubmit = (values, { resetForm }) => {
+  //   const data = {
+  //     jwt: localStorage.getItem("jwt"),
+  //     order: {
+  //       restaurantId: cart.cartItems[0].food?.restaurant._id,
+  //       deliveryAddress: {
+  //         fullName: auth.user?.fullName,
+  //         streetAddress: values.streetAddress,
+  //         city: values.city,
+  //         state: values.state,
+  //         postalCode: values.pincode,
+  //         country: "India",
+  //       },
+  //     },
+  //   };
+  //   console.log("data",data)
+  //   if (isValid(cart.cartItems)) {
+  //     dispatch(createOrder(data));
+  //   } else setOpenSnakbar(true);
+  // };
 
-  const createOrderUsingSelectedAddress = (deliveryAddress) => {
-    const data = {
-      jwt: localStorage.getItem("jwt"),
-      order: {
-        restaurantId: cart.cartItems[0].food.restaurant._id,
-        deliveryAddress: deliveryAddress,
-      },
-    };
-    if (isValid(cart.cartItems)) {
-      dispatch(createOrder(data));
-    } else setOpenSnakbar(true);
-  };
+  // const createOrderUsingSelectedAddress = (deliveryAddress) => {
+  //   const data = {
+  //     jwt: localStorage.getItem("jwt"),
+  //     order: {
+  //       restaurantId: cart.cartItems[0].food.restaurant._id,
+  //       deliveryAddress: deliveryAddress,
+  //     },
+  //   };
+  //   if (isValid(cart.cartItems)) {
+  //     dispatch(createOrder(data));
+  //   } else setOpenSnakbar(true);
+  // };
 
-  const handleCloseSankBar = () => setOpenSnakbar(false);
+  // const handleCloseSankBar = () => setOpenSnakbar(false);
 
+
+  const handleSubmit=()=>{
+    window.location.href="/payment/success/1";
+  }
   return (
     <Fragment>
       {cart.cartItems.length > 0 ? (
@@ -141,7 +145,7 @@ const Cart = () => {
             <div className="flex gap-5 flex-wrap justify-center">
               {auth.user?.addresses.map((item, index) => (
                 <AddressCard
-                  handleSelectAddress={createOrderUsingSelectedAddress}
+                  // handleSelectAddress={createOrderUsingSelectedAddress}
                   item={item}
                   showButton={true}
                 />
@@ -214,7 +218,7 @@ const Cart = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+             onSubmit={handleSubmit}
           >
             <Form>
               <Grid container spacing={2}>
@@ -292,7 +296,7 @@ const Cart = () => {
         severity="success"
         open={openSnackbar}
         autoHideDuration={6000}
-        onClose={handleCloseSankBar}
+        // onClose={handleCloseSankBar}
         message="Please Add Items Only From One Restaurants At time"
       />
     </Fragment>
