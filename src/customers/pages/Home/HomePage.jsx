@@ -24,7 +24,7 @@ const HomePage = () => {
         <div className="w-[50vw] z-10 text-center">
           <p className="text-2xl lg:text-7xl font-bold z-10 py-5">HaSaSa Food</p>
           <p className="z-10   text-gray-300 text-xl lg:text-4xl">
-            Taste the Convenience: Food, Fast and Delivered.
+          Burgers! Because no great story started with salad..
           </p>
         </div>
 
@@ -32,14 +32,6 @@ const HomePage = () => {
         <div className="fadout"></div>
       </section>
 
-      <section className="p-10 lg:py-10 lg:px-20">
-        <div className="">
-          <p className="text-2xl font-semibold text-gray-400 py-3 pb-10">
-            Top Meels
-          </p>
-          <MultipleItemsCarousel />
-        </div>
-      </section>
       <section className="px-5 lg:px-20">
         <div className="">
           <h1 className="text-2xl font-semibold text-gray-400 py-3 ">
@@ -50,8 +42,24 @@ const HomePage = () => {
               <RestaurantCard data={item} index={i} />
             ))}
           </div>
+          <div className="flex flex-wrap items-center justify-around ">
+            {restaurant.restaurants.map((item, i) => (
+              <RestaurantCard data={item} index={i} />
+            ))}
+          </div>
         </div>
       </section>
+
+      
+      <section className="p-10 lg:py-10 lg:px-20">
+        <div className="">
+          <p className="text-2xl font-semibold text-gray-400 py-3 pb-10">
+            Top Meels
+          </p>
+          <MultipleItemsCarousel />
+        </div>
+      </section>
+     
     </div>
   );
 };

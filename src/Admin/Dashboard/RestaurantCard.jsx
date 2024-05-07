@@ -35,7 +35,7 @@ const handleUpdateRestaurantStatus=()=>{
       <CardHeader
         avatar={
           <Avatar
-            sx={{ bgcolor: "#e91e63", color: "white" }}
+            sx={{ bgcolor: "#FC8019", color: "white" }}
             aria-label="recipe"
           >
             Z

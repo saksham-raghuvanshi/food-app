@@ -35,7 +35,7 @@ const Search = () => {
           ))}
         </div>
       </div>
-      <div className=" mt-7">
+      <div className=" mt-7 min-h-[100vh]">
         {menu.search.map((item) => (
           <SearchDishCard item={item} />
         ))}
